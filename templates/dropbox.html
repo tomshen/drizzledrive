@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>DrizzleDrive - {{file_path}}</title>
+    <link href='/static/css/modern.css' rel='stylesheet' typ'text/css' />
+    <link href='/static/css/style.css' rel='stylesheet' typ'text/css' />
+  </head>
+  <body>
+    <div class='page secondary'>
+      <div class='page-header'>
+        <div class='page-header-content'>
+           <h1>DrizzleDrive - {{file_path}}</h1>
+        </div>
+      </div>
+      <div class='page-region'>
+        <div class='page-region-content'>
+            <table class="bordered hovered">
+              <tr><td>Name</td><td>Last Modified</td><td>Size</td></tr>
+              {% if file_path[1:] %}
+                <tr class='success'><td><a href="/dropbox{{ file_path[:file_path.rfind('/')] }}">..</a></td><td>--</td><td>--</td></tr>
+              {% endif %}
+              {% for item in file_data %}
+                {% if item.is_dir %}
+                  <tr class='success'><td><a class='folder' href='/dropbox{{ item.path }}'>{{ item.path[item.path.rfind('/')+1:] }}</a></td><td>--</td><td>--</td></tr>
+                {% endif %}
+              {% endfor %}
+              {% for item in file_data %}
+                {% if not item.is_dir %}
+                  <tr class='info'><td><a class='file' href='/edit{{ item.path }}'>{{ item.path[item.path.rfind('/')+1:] }}</a></td><td>{{ item.modified[:16] }}</td><td>{{ item.size }}</td></tr>
+                {% endif %}
+              {% endfor %}
+            </table>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <script>
+      $('.close').click(function() {
+        $(this).parent().hide();
+      });
+    </script>
+  </body>
+</html>

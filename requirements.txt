@@ -1,0 +1,13 @@
+Flask==0.9
+Flask-Dropbox==0.2
+Jinja2==2.6
+Werkzeug==0.8.3
+argparse==1.2.1
+distribute==0.6.31
+dropbox==1.5.1
+google-api-python-client==1.0
+httplib2==0.7.7
+oauthlib==0.3.4
+python-gflags==2.0
+wsgiref==0.1.2
+newrelic

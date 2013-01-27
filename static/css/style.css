@@ -1,0 +1,32 @@
+body {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+td a {
+  color: white;
+}
+
+td a:visited {
+  color: white;
+}
+
+td a:hover {
+  color: lightgrey;
+}
+
+#doneEditButton {
+  margin-top: 35px;
+  float: right;
+}
+
+footer{
+  color:darkgrey;
+  position: absolute;
+  bottom:0;
+  height:20px;
+}
+
+#topbar {
+  margin-top: 30px;
+}

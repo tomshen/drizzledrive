@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>DrizzleDrive - Editing {{ filename }}</title>
+    <link href='/static/css/modern.css' rel='stylesheet' typ'text/css' />
+    <link href='/static/css/style.css' rel='stylesheet' typ'text/css' />
+  </head>
+  <body>
+    <div class='page secondary'>
+      <div class='page-header'>
+        <div class='page-header-content'>
+           <h1>DrizzleDrive - Editing {{ filename }}</h1> 
+        </div>
+      </div>
+      <div class='page-region'>
+        <div class='page-region-content'>
+          <div class='grid'>
+            <div class='row'><br></div>
+            <div class='row'>
+              
+              <a href='{{ fileurl }}' onclick="return openEditor('{{ fileurl }}')">
+                <div class="tile double bg-color-greenDark">
+                  <div class="tile-content">
+                    <img src='/static/img/gd-small.png' class="place-left">
+                    <h2 style='font-size:220%; line-height:150%;'>Edit File in Google Drive</h2>
+                  </div>
+                </div>
+              </a>
+
+              <a href='/upload{{ filepath }}'>
+                <div class="tile double bg-color-blueDark">
+                  <div class="tile-content">
+                    <img src='/static/img/db-small.png' class="place-left">
+                    <h2 style='font-size:200%; line-height:150%;'>Upload to Dropbox</h2>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <script>
+      function openEditor(url) {
+        newwindow=window.open(url, 'Google Drive');
+        if (window.focus) {newwindow.focus()}
+        return false;
+      }
+    </script>
+  </body>
+</html>
