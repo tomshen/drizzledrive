@@ -87,6 +87,9 @@ def home():
 # start browsing at the Dropbox root directory
 @app.route('/dropbox/')
 def dropboxStart():
+	if not dropbox.is_authenticated:
+        return redirect(dropbox.login_url)
+
     # set up dropbox
     client = dropbox.client
     folder_metadata = client.metadata('/')
@@ -105,6 +108,9 @@ def dropboxStart():
 # browse a specific directory in Dropbox
 @app.route('/dropbox/<path:folder>')
 def dropboxData(folder):
+	if not dropbox.is_authenticated:
+        return redirect(dropbox.login_url)
+
     client = dropbox.client
     folder_metadata = client.metadata(folder)
     return render_template('dropbox.html', 
@@ -115,6 +121,9 @@ def dropboxData(folder):
 fileInfo = {} # to associate Google Drive file IDs and URLs
 @app.route('/edit/<path:filepath>')
 def editFile(filepath):
+	if not dropbox.is_authenticated:
+        return redirect(dropbox.login_url)
+
     client = dropbox.client
 
     # downloads from Dropbox
@@ -160,6 +169,8 @@ def editFile(filepath):
 
 @app.route('/upload/<path:filepath>')
 def upload(filepath):
+	if not dropbox.is_authenticated:
+        return redirect(dropbox.login_url)
     client = dropbox.client
     try:
         # checks for Google Drive authorization
